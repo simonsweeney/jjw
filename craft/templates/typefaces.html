@@ -1,0 +1,63 @@
+{% extends "_layout" %}
+
+{% block content %}
+    
+{% set entries = craft.entries.section('typefaces').order('lft asc') %}
+
+
+{% set fontCSS %}
+
+    {% for entry in entries %}
+    {% set font = entry.fontFile.first() %}
+    
+        @font-face {
+            font-family: {{ entry.title }};
+            src: url("{{ font.url }}");
+        }
+    {% endfor %}
+{% endset %}
+
+{% includeCss fontCSS %}
+
+    {% for entry in entries %}
+    	<div class="face">
+    	    <div class="face__details row">
+    	        <div class="col-5">{{ entry.title }}</div>
+    	        <div class="col-4">
+    	            <div class="row face__options">
+    	                <div class="col-2">+ {{ entry.weight }}</div>
+    	                <div class="col-2">{{ entry.year }}</div>
+    	                <div class="col-2">{{ entry.glyphs }}</div>
+    	                <div class="col-3"><input type="range" min="90" max="200" value="90" class="size"></div>
+    	            </div>
+    	        </div>
+    	    </div>
+    	    <div class="row">
+    	        <input type="text" name="" class="text" placeholder="{{ entry.placeholder }}"/ style='font-family: "{{ entry.title }}"'>
+    	    </div>
+    	</div>
+    {% endfor %}
+    
+    <div class="footer row">
+        <div class="col-5"><a href="/">Jacob Jan Wise</a></div>
+        <div class="col-4"><a href="">Licensing Agreement</a></div>
+    </div>
+    
+    <script>
+        
+        $('.face').each(function(){
+            console.log('face');
+            var $face = $(this);
+            $face.find('input.size').on('input', function () {
+                var val = $(this).val();
+                console.log(val);
+                var val = val + 'px';
+                
+                $face.find('input.text').css({"font-size": val });
+            });
+     
+        });
+        
+    </script>
+    
+{% endblock %}

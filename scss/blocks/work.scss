@@ -1,0 +1,16 @@
+.work {
+    margin-left: 13px;
+
+    &__border {
+        margin-top: 13px;
+        margin-bottom: 13px;
+        border-bottom: 1px solid black;
+    }
+    
+    &__slides {
+        position: relative;
+        div {
+            width: 100%;
+        }
+    }
+}

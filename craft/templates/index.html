@@ -1,0 +1,86 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+    <header class="header col-1">
+        Jacob Jan Wise<br>
+        <br>
+        Graphic Design<br>
+        Typography<br>
+        j.wise@me.com<br>
+        <a href="tel:+447564353392">+447564353392</a><br>
+        <a href="https://www.instagram.com/jacob.j.wise/" target="_blank">instagram</a><br>
+        <br>
+        <a href="/typefaces">Typefaces</a><br>
+        About
+    </header>
+    
+    <div class="work">
+            
+
+        {% for entry in craft.entries.section('work').find() %}
+        
+            <div class="row entry">
+                <!--<div class="col-4 carousel" data-flickity='{ "adaptiveHeight": true }'>-->
+                
+                <div class="col-4">
+                    {% set max_ratio = 0 %}
+
+                    {% for asset in entry.images %}
+                        
+                        {% set this_ratio = (asset.height/asset.width) %}
+                        {% if (this_ratio > max_ratio) %}
+                            {% set max_ratio = this_ratio %}
+                        {% endif %}
+
+                    {% endfor %}
+                        
+
+                        <div class="slider slick-slider" data-id="slider--{{ entry.id}}" style="height: {{ max_ratio * 43 }}vw">
+                            
+                            {% for asset in entry.images %}
+                                <div class="slider__slide" style="background-image: url('{{ asset.url }}')"></div>
+                            {% endfor %}
+                        </div>
+                </div>
+                    
+                <!--</div>-->
+                <div class="col-3 text">
+                    {{ entry.title }}<br>
+                    <br>
+                    {{ entry.body }}
+                    
+                    
+                    <div class="text__count">
+                        <span class="text__current-slide" data-id="slider--{{ entry.id}}">1</span>/{{ entry.images|length }}
+                    </div>
+                </div>
+            </div>
+            <div class="work__border col-7"></div>
+        {% endfor %}
+
+    </div> 
+
+    
+    <script type="text/javascript" src="js/slick.js"></script>
+
+    <script>
+    
+        $('.slider').slick({
+            fade: true
+        });
+        
+
+        $('.slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+          $('.current__slide').text(currentSlide + 1);
+        });
+
+        $('.entry').each(function(){
+            console.log($('.slider .slide').height());
+        })
+                    
+    </script>
+        
+    
+    
+{% endblock %}
