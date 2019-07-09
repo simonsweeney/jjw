@@ -1,0 +1,108 @@
+{% extends "_layout" %}
+
+{% block content %}
+
+    
+	<div class="row row--margin">
+		<div class="col-5 about-text">
+			<div>
+				<img class="special-j" src="special-j.svg" alt="">acob Jan Wise<br>
+		        <a href="mailto:j.wise@me.com">j.wise@me.com</a><br>
+		        <a href="https://wise-type.myshopify.com/">WiseType© {{ now.year }}</a>
+	        </div>
+	        <div>
+	        	<img src="{{ entry.image.first().url }}" alt="">
+	        </div>
+		</div>
+		<div class="col-4 footer-margin">
+			<div class="row gap-bottom-2">
+				<div class="about-half">
+					{{ entry.introduction }}
+				</div>
+				<div class="about-half text-right">
+					Jacob Jan Wise
+				</div>
+			</div>
+			<div class="gap-bottom-2">
+			{% for item in entry.cv %}
+				<div class="row">
+					<div class="about-half">{{ item.role }}</div>
+					<div class="about-half text-right">{{ item.years }}</div>
+				</div>
+			{% endfor %}
+			</div>
+
+			<div class="row gap-bottom">
+				Press:
+			</div>
+			
+			<div class="gap-bottom-2">
+				{% for item in entry.press %}
+					<div class="row">
+						<div class="about-half">
+							{% if item.sourceUrl %}
+							<a href="{{ item.sourceUrl }}">
+							{% endif %}
+
+								{{ item.source }}
+
+							{% if item.sourceUrl %}
+							</a>
+							{% endif %}
+						</div>
+						<div class="about-half text-right">{{ item.year }}</div>
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="row gap-bottom">
+				Clients:
+			</div>
+
+			<div class="row">
+				<div class="about-cols pad-bottom">
+					{% for item in entry.clients %}
+						<p>
+						{% if item.clientUrl %}
+							<a href="{{ item.clientUrl }}">
+						{% endif %}
+
+							{{ item.clientName }}
+
+						{% if item.clientUrl %}
+							</a>
+						{% endif %}
+						</p>
+					{% endfor %}
+				</div>
+			</div>
+
+
+
+			</div>
+		</div>
+
+	</div>
+
+    <div class="footer row">
+        <div class="col-5"><a href="/">Jacob Jan Wise</a></div>
+    </div>
+    
+    
+    <script>
+        
+        $('.face').each(function(){
+            var $face = $(this);
+            $face.find('input.size').on('input', function () {
+                var val = $(this).val();
+                console.log(val);
+                var val = val + 'px';
+                
+                $face.find('input.face__test').css({"font-size": val });
+            });
+     
+        });
+        
+    </script>
+    
+{% endblock %}

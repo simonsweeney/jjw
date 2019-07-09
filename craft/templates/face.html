@@ -1,0 +1,121 @@
+{% extends "_layout" %}
+
+{% block content %}
+    
+
+
+{% set fontCSS %}
+
+    {% set font = entry.fontFile.first() %}
+    
+        @font-face {
+            font-family: {{ entry.title }};
+            src: url("{{ font.url }}");
+        }
+
+{% endset %}
+
+{% includeCss fontCSS %}
+
+
+	<div class="face">
+	    <div class="face__details row">
+	        <div class="col-3">{{ entry.title }}</div>
+            <div class="col-2"><a href="/typefaces">Back to Typefaces</a></div>
+            <div class="col-2">{{ entry.year }}</div>
+            <div class="col-1">{{ entry.glyphs }}</div>
+            <div class="col-1"><input type="range" min="90" max="200" value="90" class="size"></div>
+	    </div>
+	    <div class="row">
+	        <input type="text" class="face__test" placeholder="{{ entry.placeholder }}"/ style='font-family: "{{ entry.title }}"'>
+	    </div>
+	</div>
+        
+	
+	<div class="row row--margin">
+
+		<div class="col-5">
+			<div class="row border-bottom pad-bottom">
+				<div class="face-1">
+					Licenses:
+					<div class="gap-top gap-bottom">
+						Print License<br>
+						{% for item in entry.printLicenses %}
+							{{ item.fileType }}<br>
+						{% endfor %}
+					</div>
+				
+					<div class="gap-bottom">
+						Web License<br>
+						{% for item in entry.webLicenses %}
+							{{ item.fileType }}<br>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="face-1">
+					CPU’s:
+					<div class="gap-top gap-bottom">
+						{% for item in entry.cpuTotal %}
+							{{ item.cpuCount }}<br>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="face-1">
+					Total:
+					<div class="gap-top gap-bottom">
+						{% for item in entry.cpuTotal %}
+							{{ item.total }}<br>
+						{% endfor %}
+					</div>
+				</div> 
+				<div class="face-2">
+					{{ entry.languageHeading }}
+					<div class="gap-top">
+						{{ entry.languageBody }}
+					</div>
+				</div>
+			</div>
+			<div class="row pad-top">
+				{% if entry.wiseTypeLink != '' %}
+					{% set href = entry.wiseTypeLink %}
+				{% else %}
+					{% set href = "https://wise-type.myshopify.com/" %}
+				{% endif %}
+
+				<a href="{{ href }}" target="_blank" >+ Purchase</a>
+			</div>
+		</div>
+	
+		<div class="col-4 copy">
+			{{ entry.licenseAgreement }}
+		</div>
+		
+			
+		</div>
+		
+		
+	</div>
+
+    <div class="footer row">
+        <div class="col-5"><a href="/">Jacob Jan Wise</a></div>
+        <div class="col-4"><a href="https://wise-type.myshopify.com/" target="_blank">WiseType©</a></div>
+    </div>
+    
+    
+    <script>
+        
+        $('.face').each(function(){
+            var $face = $(this);
+            $face.find('input.size').on('input', function () {
+                var val = $(this).val();
+                console.log(val);
+                var val = val + 'px';
+                
+                $face.find('input.face__test').css({"font-size": val });
+            });
+     
+        });
+        
+    </script>
+    
+{% endblock %}

@@ -5,14 +5,14 @@
     <header class="header col-1">
         Jacob Jan Wise<br>
         <br>
-        Graphic Design<br>
-        Typography<br>
-        j.wise@me.com<br>
+        <a href="/typefaces">Typefaces</a><br>
+        <a href="/about">About</a><br>
+        <br>
+        <a href="mailto:j.wise@me.com">j.wise@me.com</a><br>
         <a href="tel:+447564353392">+447564353392</a><br>
         <a href="https://www.instagram.com/jacob.j.wise/" target="_blank">instagram</a><br>
-        <br>
-        <a href="/typefaces">Typefaces</a><br>
-        About
+        <a href="https://wise-type.myshopify.com/" target="_blank">WiseType©</a>
+
     </header>
     
     <div class="work">
@@ -20,8 +20,7 @@
 
         {% for entry in craft.entries.section('work').find() %}
         
-            <div class="row entry">
-                <!--<div class="col-4 carousel" data-flickity='{ "adaptiveHeight": true }'>-->
+            <div class="row entry" style="position: relative">
                 
                 <div class="col-4">
                     {% set max_ratio = 0 %}
@@ -44,16 +43,13 @@
                         </div>
                 </div>
                     
-                <!--</div>-->
                 <div class="col-3 text">
                     {{ entry.title }}<br>
                     <br>
                     {{ entry.body }}
                     
                     
-                    <div class="text__count">
-                        <span class="text__current-slide" data-id="slider--{{ entry.id}}">1</span>/{{ entry.images|length }}
-                    </div>
+                    <div class="text__count"></div>
                 </div>
             </div>
             <div class="work__border col-7"></div>
@@ -65,19 +61,28 @@
     <script type="text/javascript" src="js/slick.js"></script>
 
     <script>
-    
-        $('.slider').slick({
-            fade: true
+
+        $('.entry').each(function() {
+            var $status = $(this).find('.text__count');
+            var $slider = $(this).find('.slider');
+
+            $slider.on('init reInit afterChange', function(event, slick, currentSlide, nextSlide){
+                var i = (currentSlide ? currentSlide : 0) + 1;
+                $status.text(i + '/' + slick.slideCount);
+            });
+
+            $slider.slick({
+                speed: 0,
+                arrows: true,
+                nextArrow: '<div class="slider__next"></div>',
+                prevArrow: '<div class="slider__prev"></div>',
+            });
         });
+            
         
-
-        $('.slider').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-          $('.current__slide').text(currentSlide + 1);
-        });
-
-        $('.entry').each(function(){
-            console.log($('.slider .slide').height());
-        })
+    
+    
+ 
                     
     </script>
         

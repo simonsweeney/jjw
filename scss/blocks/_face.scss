@@ -1,0 +1,87 @@
+.face {
+    margin-left: 13px;
+    margin-right: 13px;
+    border-bottom: 1px solid black;
+    
+    &:not(:first-of-type) {
+        margin-top: 13px;
+    }
+    
+    input {
+        &:focus {
+            outline: none;
+        }
+    }
+    input[type='text'] {
+        border: 0;
+        font-size: 90px;
+        margin-top: 40px;
+        margin-bottom: 10px;
+        width: 100%;
+        max-width: 100%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        &::placeholder {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            color: black;    
+        }
+    }
+    
+    input[type='range'] {
+        width: 100%;
+        -webkit-appearance: none; 
+        background: transparent;
+        display: block;
+        margin-top: 10px;
+        
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 1px solid black;
+            height: 15px;
+            width: 15px;
+            border-radius: 15px;
+            background: white;
+            cursor: pointer;
+            margin-top: -7px;
+        }
+        
+        &::-moz-range-thumb {
+            -webkit-appearance: none;
+            border: 1px solid black;
+            height: 15px;
+            width: 15px;
+            border-radius: 15px;
+            background: white;
+            cursor: pointer;
+            margin-top: -7px;
+        }
+        
+        &::-ms-thumb {
+            -webkit-appearance: none;
+            border: 1px solid black;
+            height: 15px;
+            width: 15px;
+            border-radius: 15px;
+            background: white;
+            cursor: pointer;
+            margin-top: -7px;
+        }
+        
+        &::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 1px;
+            background: black;
+            cursor: pointer;
+        }
+        
+        &::-ms-track {
+          width: 100%;
+          cursor: pointer;
+          background: transparent; 
+          border-color: transparent;
+          color: transparent;
+        }
+    }
+}

@@ -1,0 +1,12 @@
+.header {
+    position: fixed;
+    right: 0;
+    top: 13px;
+    z-index: 1001;
+
+    &__back {
+	    position: fixed;
+	    z-index: 1001;
+	    left: 13px;
+    }
+}

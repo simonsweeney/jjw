@@ -1,7 +1,11 @@
-@import "globals/reset";
-@import "globals/grid";
-@import "globals/slick";
+@import "globals/_reset";
+@import "globals/_grid";
+@import "globals/_slick";
 
 
-@import "blocks/header";
-@import "blocks/work";
+@import "blocks/_header";
+@import "blocks/_work";
+@import "blocks/_slider";
+@import "blocks/_text";
+@import "blocks/_face";
+@import "blocks/_footer";

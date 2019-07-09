@@ -35,6 +35,39 @@ a:hover {
   border-bottom: 1px solid black;
 }
 
+/* line 35, scss/globals/_reset.scss */
+.copy p {
+  margin-bottom: 1em;
+}
+
+/* line 39, scss/globals/_reset.scss */
+.border-bottom {
+  border-bottom: 1px solid black;
+}
+
+/* line 43, scss/globals/_reset.scss */
+.text-right {
+  text-align: right;
+}
+
+/* line 47, scss/globals/_reset.scss */
+.about-text {
+  font-size: 6.5vw;
+  line-height: 1.1;
+}
+/* line 51, scss/globals/_reset.scss */
+.about-text a:hover {
+  border-bottom: 0;
+}
+
+/* line 56, scss/globals/_reset.scss */
+.special-j {
+  width: 1.3em;
+  height: 1.2em;
+  display: inline-block;
+  margin-bottom: -.2em;
+}
+
 /* line 1, scss/globals/_grid.scss */
 main {
   margin-top: 13px;
@@ -42,104 +75,153 @@ main {
 
 /* line 5, scss/globals/_grid.scss */
 .row {
-  content: "";
-  clear: both;
-  width: 100%;
+  display: flex;
+}
+/* line 7, scss/globals/_grid.scss */
+.row--margin {
+  margin: 13px;
 }
 
-/* line 11, scss/globals/_grid.scss */
-[class*='col-'] {
-  float: left;
-}
-
-/* line 15, scss/globals/_grid.scss */
+/* line 13, scss/globals/_grid.scss */
 .col-1 {
   width: 11.111%;
 }
 
-/* line 16, scss/globals/_grid.scss */
+/* line 14, scss/globals/_grid.scss */
 .col-2 {
   width: 22.222%;
 }
 
-/* line 17, scss/globals/_grid.scss */
+/* line 15, scss/globals/_grid.scss */
 .col-3 {
   width: 33.333%;
 }
 
-/* line 18, scss/globals/_grid.scss */
+/* line 16, scss/globals/_grid.scss */
 .col-4 {
   width: 44.444%;
 }
 
-/* line 19, scss/globals/_grid.scss */
+/* line 17, scss/globals/_grid.scss */
 .col-5 {
   width: 55.555%;
 }
 
-/* line 20, scss/globals/_grid.scss */
+/* line 18, scss/globals/_grid.scss */
 .col-6 {
   width: 66.666%;
 }
 
-/* line 21, scss/globals/_grid.scss */
+/* line 19, scss/globals/_grid.scss */
 .col-7 {
   width: 77.777%;
 }
 
-/* line 22, scss/globals/_grid.scss */
+/* line 20, scss/globals/_grid.scss */
 .col-8 {
   width: 88.888%;
 }
 
-/* line 24, scss/globals/_grid.scss */
+/* line 22, scss/globals/_grid.scss */
 .off-1 {
   margin-left: 11.111%;
 }
 
-/* line 25, scss/globals/_grid.scss */
+/* line 23, scss/globals/_grid.scss */
 .off-2 {
   margin-left: 22.222%;
 }
 
-/* line 26, scss/globals/_grid.scss */
+/* line 24, scss/globals/_grid.scss */
 .off-3 {
   margin-left: 33.333%;
 }
 
-/* line 27, scss/globals/_grid.scss */
+/* line 25, scss/globals/_grid.scss */
 .off-4 {
   margin-left: 44.444%;
 }
 
-/* line 28, scss/globals/_grid.scss */
+/* line 26, scss/globals/_grid.scss */
 .off-5 {
   margin-left: 55.555%;
 }
 
-/* line 29, scss/globals/_grid.scss */
+/* line 27, scss/globals/_grid.scss */
 .off-6 {
   margin-left: 66.666%;
 }
 
-/* line 30, scss/globals/_grid.scss */
+/* line 28, scss/globals/_grid.scss */
 .off-7 {
   margin-left: 77.777%;
 }
 
-/* line 31, scss/globals/_grid.scss */
+/* line 29, scss/globals/_grid.scss */
 .off-8 {
   margin-left: 88.888%;
 }
 
+/* line 32, scss/globals/_grid.scss */
+.face-1 {
+  width: 20%;
+}
+
 /* line 33, scss/globals/_grid.scss */
+.face-2 {
+  width: 40%;
+}
+
+/* line 35, scss/globals/_grid.scss */
+.about-half {
+  width: 50%;
+}
+
+/* line 37, scss/globals/_grid.scss */
+.about-cols {
+  width: 100%;
+  column-count: 2;
+  column-gap: 13px;
+}
+
+/* line 43, scss/globals/_grid.scss */
 [class*='col-'] {
   padding-right: 13px;
 }
 
-/* line 36, scss/globals/_grid.scss */
+/* line 47, scss/globals/_grid.scss */
 [class*='col-']:last-of-type {
   padding-right: 0;
+}
+
+/* line 52, scss/globals/_grid.scss */
+.footer-margin {
+  margin-bottom: 60px;
+}
+
+/* line 56, scss/globals/_grid.scss */
+.gap-top {
+  margin-top: 1em;
+}
+
+/* line 57, scss/globals/_grid.scss */
+.gap-bottom {
+  margin-bottom: 1em;
+}
+
+/* line 58, scss/globals/_grid.scss */
+.gap-bottom-2 {
+  margin-bottom: 2em;
+}
+
+/* line 60, scss/globals/_grid.scss */
+.pad-top {
+  padding-top: 1em;
+}
+
+/* line 61, scss/globals/_grid.scss */
+.pad-bottom {
+  padding-bottom: 1em;
 }
 
 /* Slider */
@@ -411,6 +493,13 @@ main {
   position: fixed;
   right: 0;
   top: 13px;
+  z-index: 1001;
+}
+/* line 7, scss/blocks/_header.scss */
+.header__back {
+  position: fixed;
+  z-index: 1001;
+  left: 13px;
 }
 
 /* line 1, scss/blocks/_work.scss */
@@ -424,17 +513,11 @@ main {
   border-bottom: 1px solid black;
 }
 
-/* line 12, scss/blocks/_work.scss */
-.current__slide {
-  background: red;
-}
-
 /* line 1, scss/blocks/_slider.scss */
 .slider {
-  background: black;
   width: 100%;
 }
-/* line 5, scss/blocks/_slider.scss */
+/* line 4, scss/blocks/_slider.scss */
 .slider__slide {
   height: 100%;
   width: 100%;
@@ -442,10 +525,34 @@ main {
   background-position: center center;
   background-repeat: no-repeat;
 }
+/* line 12, scss/blocks/_slider.scss */
+.slider__next, .slider__prev {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  z-index: 1000;
+  top: 0;
+}
+/* line 20, scss/blocks/_slider.scss */
+.slider__next {
+  right: 0;
+  cursor: e-resize;
+}
+/* line 24, scss/blocks/_slider.scss */
+.slider__prev {
+  cursor: w-resize;
+}
 
 /* line 1, scss/blocks/_text.scss */
 .text {
   height: 100%;
+  position: absolute;
+  left: 44.444%;
+}
+/* line 5, scss/blocks/_text.scss */
+.text__count {
+  position: absolute;
+  bottom: 0;
 }
 
 /* line 1, scss/blocks/_face.scss */
@@ -540,5 +647,7 @@ main {
 .footer {
   position: fixed;
   bottom: 0;
-  margin: 13px;
+  padding: 13px;
+  width: 100%;
+  background: white;
 }
